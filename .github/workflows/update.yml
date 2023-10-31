@@ -16,6 +16,11 @@ jobs:
         ref: main
         submodules: recursive
 
+    - name: Set up Git
+      run: |
+        git config --global user.email "adamw97@vt.edu"
+        git config --global user.name "Adam Wilborn"
+        
     - name: Fetch Upstream
       run: |
         git remote add upstream https://github.com/UberGuidoZ/Flipper.git
