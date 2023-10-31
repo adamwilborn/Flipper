@@ -33,4 +33,5 @@ jobs:
 
     - name: Push Changes
       run: |
+        git pull origin main
         git push origin main
