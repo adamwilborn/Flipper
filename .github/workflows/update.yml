@@ -31,7 +31,8 @@ jobs:
       run: |
         git submodule update --remote --recursive
 
-    - name: Merge Changes
+    - name: Merge and Push Changes
       run: |
-        git pull --no-edit origin main
+        git fetch origin main
+        git merge FETCH_HEAD --no-edit
         git push origin main
