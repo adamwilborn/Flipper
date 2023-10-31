@@ -1,0 +1,30 @@
+name: Update Fork
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        ref: main
+        submodules: recursive
+
+    - name: Fetch Upstream
+      run: |
+        git remote add upstream https://github.com/UberGuidoZ/Flipper.git
+        git fetch upstream
+        git rebase upstream/main
+
+    - name: Update Submodules
+      run: |
+        git submodule update --remote --recursive
+
+    - name: Push Changes
+      run: |
+        git push origin main
